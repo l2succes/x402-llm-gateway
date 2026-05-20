@@ -1,0 +1,25 @@
+{
+  "name": "x402-llm-gateway",
+  "version": "0.1.0",
+  "description": "OpenRouter-compatible LLM gateway gated by X402 micropayments (USDC on Base)",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.36.0",
+    "@google/generative-ai": "^0.24.0",
+    "@hono/node-server": "^1.13.7",
+    "@x402/hono": "^1.2.0",
+    "hono": "^4.7.0",
+    "openai": "^4.96.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  }
+}
