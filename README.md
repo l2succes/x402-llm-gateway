@@ -117,14 +117,17 @@ PORT=3000
 
 ## Supported Models
 
-| Slug | Provider | Context |
-|------|----------|---------|
-| `anthropic/claude-sonnet-4-5` | Anthropic | 200k |
-| `anthropic/claude-3-5-haiku` | Anthropic | 200k |
-| `openai/gpt-4o` | OpenAI | 128k |
-| `openai/gpt-4o-mini` | OpenAI | 128k |
-| `google/gemini-2.0-flash` | Google | 1M |
-| `google/gemini-2.5-pro` | Google | 2M |
+| Slug | Provider | Context | Notes |
+|------|----------|---------|-------|
+| `anthropic/claude-opus-4-7` | Anthropic | 1M | Most capable |
+| `anthropic/claude-sonnet-4-6` | Anthropic | 1M | Best speed/intelligence balance |
+| `anthropic/claude-haiku-4-5` | Anthropic | 200k | Fastest |
+| `openai/gpt-4o` | OpenAI | 128k | |
+| `openai/gpt-4o-mini` | OpenAI | 128k | |
+| `openai/gpt-5.2` | OpenAI | 128k | Latest flagship |
+| `google/gemini-2.5-pro` | Google | 2M | Most advanced |
+| `google/gemini-2.5-flash` | Google | 1M | Best price-performance |
+| `google/gemini-3-flash-preview` | Google | 1M | Latest generation (preview) |
 
 Unknown model slugs return `404` with OpenAI error format.
 
