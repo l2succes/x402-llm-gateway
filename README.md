@@ -122,12 +122,13 @@ PORT=3000
 | `anthropic/claude-opus-4-7` | Anthropic | 1M | Most capable |
 | `anthropic/claude-sonnet-4-6` | Anthropic | 1M | Best speed/intelligence balance |
 | `anthropic/claude-haiku-4-5` | Anthropic | 200k | Fastest |
-| `openai/gpt-4o` | OpenAI | 128k | |
-| `openai/gpt-4o-mini` | OpenAI | 128k | |
-| `openai/gpt-5.2` | OpenAI | 128k | Latest flagship |
-| `google/gemini-2.5-pro` | Google | 2M | Most advanced |
+| `openai/gpt-5.5` | OpenAI | 128k | Latest flagship (API since Apr 24, 2026) |
+| `openai/gpt-5.5-pro` | OpenAI | 128k | Highest capability variant |
+| `openai/gpt-4o` | OpenAI | 128k | Proven multimodal model |
+| `openai/gpt-4o-mini` | OpenAI | 128k | Fast and affordable |
+| `google/gemini-3.5-flash` | Google | 1M | Latest Gemini, GA as of May 19, 2026 |
+| `google/gemini-2.5-pro` | Google | 2M | Most advanced stable model |
 | `google/gemini-2.5-flash` | Google | 1M | Best price-performance |
-| `google/gemini-3-flash-preview` | Google | 1M | Latest generation (preview) |
 
 Unknown model slugs return `404` with OpenAI error format.
 

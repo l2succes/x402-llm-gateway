@@ -23,12 +23,24 @@ export const MODEL_REGISTRY: Record<string, ModelRoute> = {
     description: "Anthropic Claude Haiku 4.5 — fastest Claude, near-frontier intelligence",
   },
 
-  // OpenAI — latest as of 2026-05
+  // OpenAI — latest as of 2026-05 (GPT-5.5 in API since April 24, 2026)
+  "openai/gpt-5.5": {
+    provider: "openai",
+    modelId: "gpt-5.5",
+    contextWindow: 128000,
+    description: "OpenAI GPT-5.5 — latest flagship, strongest agentic coding and reasoning",
+  },
+  "openai/gpt-5.5-pro": {
+    provider: "openai",
+    modelId: "gpt-5.5-pro",
+    contextWindow: 128000,
+    description: "OpenAI GPT-5.5 Pro — highest capability GPT-5.5 variant",
+  },
   "openai/gpt-4o": {
     provider: "openai",
     modelId: "gpt-4o",
     contextWindow: 128000,
-    description: "OpenAI GPT-4o — flagship multimodal model",
+    description: "OpenAI GPT-4o — proven multimodal model",
   },
   "openai/gpt-4o-mini": {
     provider: "openai",
@@ -36,31 +48,25 @@ export const MODEL_REGISTRY: Record<string, ModelRoute> = {
     contextWindow: 128000,
     description: "OpenAI GPT-4o Mini — fast and affordable",
   },
-  "openai/gpt-5.2": {
-    provider: "openai",
-    modelId: "gpt-5.2",
-    contextWindow: 128000,
-    description: "OpenAI GPT-5.2 — latest OpenAI flagship model",
-  },
 
-  // Google — latest stable as of 2026-05
+  // Google — latest as of 2026-05 (Gemini 3.5 Flash GA, 3.5 Pro coming soon)
+  "google/gemini-3.5-flash": {
+    provider: "google",
+    modelId: "gemini-3.5-flash",
+    contextWindow: 1000000,
+    description: "Google Gemini 3.5 Flash — frontier performance, 4x faster than other frontier models",
+  },
   "google/gemini-2.5-pro": {
     provider: "google",
     modelId: "gemini-2.5-pro",
     contextWindow: 2000000,
-    description: "Google Gemini 2.5 Pro — 2M context, most advanced",
+    description: "Google Gemini 2.5 Pro — 2M context, most advanced stable model",
   },
   "google/gemini-2.5-flash": {
     provider: "google",
     modelId: "gemini-2.5-flash",
     contextWindow: 1000000,
     description: "Google Gemini 2.5 Flash — 1M context, best price-performance",
-  },
-  "google/gemini-3-flash-preview": {
-    provider: "google",
-    modelId: "gemini-3-flash-preview",
-    contextWindow: 1000000,
-    description: "Google Gemini 3 Flash (preview) — latest Gemini generation",
   },
 }
 
