@@ -25,7 +25,7 @@ function createLimiter(windowMs: number, max: number) {
 
 const checkIp = createLimiter(60_000, 60) // 60 req/min per IP
 
-export function ipRateLimiter(c: Context, next: Next) {
+export async function ipRateLimiter(c: Context, next: Next): Promise<void | Response> {
   const ip =
     c.req.header("cf-connecting-ip") ??
     c.req.header("x-forwarded-for")?.split(",")[0].trim() ??

@@ -1,6 +1,7 @@
 import { Hono } from "hono"
 import { serve } from "@hono/node-server"
-import { paymentMiddleware, Resource } from "@x402/hono"
+import { paymentMiddleware, x402ResourceServer } from "@x402/hono"
+import { HTTPFacilitatorClient } from "@x402/core/server"
 import { config, validateConfig } from "./config.js"
 import { modelsHandler, MODEL_REGISTRY } from "./models.js"
 import { completionsHandler } from "./completions.js"
@@ -13,17 +14,28 @@ const app = new Hono()
 // Rate limiting (pre-payment, all routes)
 app.use("*", ipRateLimiter)
 
-// X402 payment gate on the completions endpoint
+// X402 setup
+const facilitator = new HTTPFacilitatorClient({ url: config.facilitatorUrl })
+const resourceServer = new x402ResourceServer(facilitator)
+
 app.use(
   "/api/v1/chat/completions",
-  paymentMiddleware(config.treasuryWallet, config.gatewayPriceUsd, {
-    facilitatorUrl: config.facilitatorUrl,
-    resource: {
-      description:
-        "OpenRouter-compatible LLM completions. Supports anthropic/*, openai/*, google/* model slugs. $0.01 USDC per call on Base mainnet.",
-      mimeType: "application/json",
-    } as Resource,
-  }),
+  paymentMiddleware(
+    {
+      "POST /api/v1/chat/completions": {
+        accepts: {
+          scheme: "exact",
+          payTo: config.treasuryWallet,
+          price: config.gatewayPriceUsd,
+          network: config.network,
+        },
+        description:
+          "OpenRouter-compatible LLM completions. Supports anthropic/*, openai/*, google/* model slugs. $0.01 USDC per call on Base mainnet.",
+        mimeType: "application/json",
+      },
+    },
+    resourceServer,
+  ),
 )
 
 // Routes
